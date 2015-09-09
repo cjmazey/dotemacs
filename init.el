@@ -138,10 +138,6 @@
          ("M-X" . smex-major-mode-commands)
          ("M-x" . smex)))
 
-(use-package sml-mode
-  :ensure t
-  :commands (sml-mode sml-run))
-
 (use-package haskell-meta
   :defer t
   :init
@@ -187,6 +183,17 @@
     :ensure t
     :commands company-coq-initialize
     :init (add-hook 'coq-mode-hook 'company-coq-initialize)))
+
+(use-package sml-meta
+  :defer t
+  :init
+  (use-package sml-mode
+    :ensure t
+    :commands (sml-mode sml-run))
+  (use-package ob-sml
+    :ensure t))
+
+
 
 (provide 'init)
 ;;; init.el ends here
