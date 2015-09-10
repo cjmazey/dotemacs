@@ -1,8 +1,17 @@
+#+TITLE: Emacs Configuration
+#+OPTIONS: num:nil
 #+STARTUP: indent
 
-* Initialization
+* Header
+#+BEGIN_SRC emacs-lisp
+  ;;; init --- init.el
 
-** Usage
+  ;;; Commentary:
+
+  ;;; Code:
+#+END_SRC
+
+* Usage
 To use this, make =init.el= the following:
 
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -10,6 +19,8 @@ To use this, make =init.el= the following:
    (expand-file-name "foo.org"
                      user-emacs-directory))
 #+END_SRC
+
+* Initialization
 
 ** Customize
 
@@ -289,4 +300,10 @@ Miscellaneous things that don't fit anywhere else.
       :commands (sml-mode sml-run))
     (use-package ob-sml
       :ensure t))
+#+END_SRC
+
+* Footer
+#+BEGIN_SRC emacs-lisp
+  (provide 'init)
+  ;;; init.el ends here
 #+END_SRC
