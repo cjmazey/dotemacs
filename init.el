@@ -112,7 +112,16 @@
   :defer t
   :init
   (use-package helm-config
-    :ensure helm))
+    :ensure helm
+    :demand t
+    :bind (("C-x C-f" . helm-find-files)
+	   ("C-Z" . helm-buffers-list)
+	   ("C-z" . helm-mini)
+	   ("M-x" . helm-M-x))
+    :config
+    (use-package helm-mode
+      :diminish helm-mode
+      :init (helm-mode 1))))
 
 (use-package hl-line
   :config (global-hl-line-mode 1))
