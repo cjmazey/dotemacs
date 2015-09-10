@@ -26,11 +26,16 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (column-number-mode 1)
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (set-frame-size (selected-frame) 80 50)
+  (global-eldoc-mode 1)
+  (global-hl-line-mode 1)
   (set-language-environment "UTF-8")
   (setq auto-save-default nil)
+  (setq default-frame-alist
+	'((width . 80)
+	  (height . 50)
+	  (menu-bar-lines . 0)
+	  (vertical-scroll-bars . nil)
+	  (tool-bar-lines . 0)))
   (setq indent-tabs-mode nil)
   (setq inhibit-startup-echo-area-message t)
   (setq inhibit-startup-message t)
@@ -41,8 +46,7 @@
   (setq require-final-newline t)
   (setq scroll-conservatively 101)
   (show-paren-mode 1)
-  (size-indication-mode 1)
-  (tool-bar-mode -1))
+  (size-indication-mode 1))
 
 (use-package theme-meta
   :defer t
@@ -96,9 +100,6 @@
   :config (global-company-mode 1)
   :diminish company-mode)
 
-(use-package eldoc
-  :config (global-eldoc-mode 1))
-
 (use-package flycheck
   :ensure t
   :config (global-flycheck-mode 1))
@@ -122,9 +123,6 @@
     (use-package helm-mode
       :diminish helm-mode
       :init (helm-mode 1))))
-
-(use-package hl-line
-  :config (global-hl-line-mode 1))
 
 (use-package magit
   :ensure t
