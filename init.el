@@ -108,15 +108,14 @@
   :config (golden-ratio-mode)
   :diminish golden-ratio-mode)
 
+(use-package helm-meta
+  :defer t
+  :init
+  (use-package helm-config
+    :ensure helm))
+
 (use-package hl-line
   :config (global-hl-line-mode 1))
-
-(use-package ibuffer
-  :bind (("C-S-z" . ibuffer)))
-
-(use-package ido
-  :bind (("C-z" . ido-switch-buffer))
-  :config (ido-mode 1))
 
 (use-package magit
   :ensure t
@@ -131,12 +130,6 @@
 (use-package slime
   :ensure t
   :commands (slime slime-mode))
-
-(use-package smex
-  :ensure t
-  :bind (("C-c M-x" . execute-extended-command)
-         ("M-X" . smex-major-mode-commands)
-         ("M-x" . smex)))
 
 (use-package haskell-meta
   :defer t
@@ -192,8 +185,6 @@
     :commands (sml-mode sml-run))
   (use-package ob-sml
     :ensure t))
-
-
 
 (provide 'init)
 ;;; init.el ends here
