@@ -115,7 +115,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package spacemacs-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'spacemacs-light 'no-confirm))
+    (load-theme 'faff 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -132,8 +132,7 @@ Miscellaneous things that don't fit anywhere else.
                         :font "Noto Sans 8")
     (set-face-attribute 'Info-quoted nil
                         :font "Source Code Pro 8"
-                        :background "lemon chiffon"
-                        :foreground "indian red"))
+                        :inherit font-lock-keyword-face))
 #+END_SRC
 
 * Global keybindings
