@@ -158,7 +158,8 @@ Miscellaneous things that don't fit anywhere else.
     (let ((coding-system-for-read 'utf-8)
           (file (shell-command-to-string "agda-mode locate")))
       (when (file-exists-p file)
-        (load-file file))))
+        (load-file file)))
+    (use-package agda-input))
 #+END_SRC
 
 ** Company
