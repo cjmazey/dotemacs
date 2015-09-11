@@ -152,14 +152,18 @@ Miscellaneous things that don't fit anywhere else.
 ** Agda
 
 #+BEGIN_SRC emacs-lisp
-  (use-package agda2
+  (eval-and-compile
+    (defvar agda2-directory
+      (file-name-directory (shell-command-to-string "agda-mode locate"))))
+
+  (use-package agda-meta
     :defer t
     :init
-    (let ((coding-system-for-read 'utf-8)
-          (file (shell-command-to-string "agda-mode locate")))
-      (when (file-exists-p file)
-        (load-file file)))
-    (use-package agda-input))
+    (use-package agda2
+      :load-path agda2-directory
+      :commands agda2-mode)
+    (use-package agda-input
+      :load-path agda2-directory))
 #+END_SRC
 
 ** Company
