@@ -78,7 +78,7 @@ Miscellaneous things that don't fit anywhere else.
     (setq auto-save-default nil)
     (setq default-frame-alist
           '((width . 80)
-            (height . 50)
+            (height . 40)
             (menu-bar-lines . 0)
             (vertical-scroll-bars . nil)
             (tool-bar-lines . 0)))
@@ -115,7 +115,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package spacemacs-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'faff 'no-confirm))
+    (load-theme 'spacemacs-dark 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -125,13 +125,13 @@ Miscellaneous things that don't fit anywhere else.
     :defer t
     :init
     (set-face-attribute 'default nil
-                        :font "Source Code Pro 8")
+                        :font "IBM 3270 Medium 11")
     (set-face-attribute 'fixed-pitch nil
-                        :font "Source Code Pro 8")
+                        :font "IBM 3270 Medium 11")
     (set-face-attribute 'variable-pitch nil
                         :font "Noto Sans 8")
     (set-face-attribute 'Info-quoted nil
-                        :font "Source Code Pro 8"
+                        :font "IBM 3270 Medium 11"
                         :inherit font-lock-keyword-face))
 #+END_SRC
 
@@ -203,20 +203,19 @@ Miscellaneous things that don't fit anywhere else.
 ** Helm
 
 #+BEGIN_SRC emacs-lisp
-  (use-package helm-meta
-    :defer t
-    :init
-    (use-package helm-config
-      :ensure helm
-      :demand t
-      :bind (("C-x C-f" . helm-find-files)
-             ("C-Z" . helm-buffers-list)
-             ("C-z" . helm-mini)
-             ("M-x" . helm-M-x))
-      :config
-      (use-package helm-mode
-        :diminish helm-mode
-        :init (helm-mode 1))))
+  (use-package helm-config
+    :ensure helm
+    :demand t
+    :bind (("C-x C-f" . helm-find-files)
+           ("C-Z" . helm-buffers-list)
+           ("C-z" . helm-mini)
+           ("M-x" . helm-M-x))
+    :config
+    (use-package helm-mode
+      :diminish helm-mode
+      :init (helm-mode 1))
+    (use-package helm-ls-git
+      :ensure helm-ls-git))
 #+END_SRC
 
 ** Magit
