@@ -115,7 +115,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package spacemacs-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'spacemacs-dark 'no-confirm))
+    (load-theme 'spacemacs-light 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -164,6 +164,13 @@ Miscellaneous things that don't fit anywhere else.
       :commands agda2-mode)
     (use-package agda-input
       :load-path agda2-directory))
+#+END_SRC
+
+** AUCTex
+
+#+BEGIN_SRC emacs-lisp
+  (use-package tex-site
+    :ensure auctex)
 #+END_SRC
 
 ** Company
