@@ -115,7 +115,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package spacemacs-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'spacemacs-light 'no-confirm))
+    (load-theme 'leuven 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -125,13 +125,13 @@ Miscellaneous things that don't fit anywhere else.
     :defer t
     :init
     (set-face-attribute 'default nil
-                        :font "IBM 3270 Medium 11")
+                        :font "IBM 3270 Medium 10")
     (set-face-attribute 'fixed-pitch nil
-                        :font "IBM 3270 Medium 11")
+                        :font "IBM 3270 Medium 10")
     (set-face-attribute 'variable-pitch nil
                         :font "Noto Sans 8")
     (set-face-attribute 'Info-quoted nil
-                        :font "IBM 3270 Medium 11"
+                        :font "IBM 3270 Medium 10"
                         :inherit font-lock-keyword-face))
 #+END_SRC
 
@@ -276,8 +276,7 @@ Miscellaneous things that don't fit anywhere else.
     :bind (("C-c o a" . org-agenda)
            ("C-c o b" . org-iswitchb)
            ("C-c o c" . org-capture)
-           ("C-c o l" . org-store-link))
-    :config (setq org-src-fontify-natively t))
+           ("C-c o l" . org-store-link)))
 #+END_SRC
 
 ** Proof General
@@ -299,7 +298,10 @@ Miscellaneous things that don't fit anywhere else.
 #+BEGIN_SRC emacs-lisp
   (use-package slime
     :ensure t
-    :commands (slime slime-mode))
+    :commands (slime slime-mode)
+    :init
+    (setq inferior-lisp-program "sbcl")
+    (setq slime-contribs '(slime-fancy)))
 #+END_SRC
 
 ** SML
@@ -316,6 +318,7 @@ Miscellaneous things that don't fit anywhere else.
 #+END_SRC
 
 * Footer
+
 #+BEGIN_SRC emacs-lisp
   (provide 'init-org)
   ;;; init-org.el ends here
