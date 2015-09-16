@@ -115,7 +115,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package spacemacs-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'leuven 'no-confirm))
+    (load-theme 'majapahit-light 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -217,8 +217,9 @@ Miscellaneous things that don't fit anywhere else.
   (use-package helm-config
     :ensure helm
     :demand t
-    :bind (("C-x C-f" . helm-find-files)
-           ("C-Z" . helm-buffers-list)
+    :bind (("C-S-z" . helm-buffers-list)
+           ("C-x C-f" . helm-find-files)
+           ("C-x p" . helm-browse-project)
            ("C-z" . helm-mini)
            ("M-x" . helm-M-x))
     :config
