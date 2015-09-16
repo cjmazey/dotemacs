@@ -294,6 +294,15 @@ Miscellaneous things that don't fit anywhere else.
       :init (add-hook 'coq-mode-hook 'company-coq-initialize)))
 #+END_SRC
 
+** Rainbow Delimiters
+
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :config
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+END_SRC
+
 ** Slime
 
 #+BEGIN_SRC emacs-lisp
