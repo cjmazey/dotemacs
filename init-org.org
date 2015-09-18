@@ -126,13 +126,13 @@ Miscellaneous things that don't fit anywhere else.
     :defer t
     :init
     (set-face-attribute 'default nil
-                        :font "IBM 3270 Medium 10")
+                        :font "IBM 3270 Medium 11")
     (set-face-attribute 'fixed-pitch nil
-                        :font "IBM 3270 Medium 10")
+                        :font "IBM 3270 Medium 11")
     (set-face-attribute 'variable-pitch nil
                         :font "Noto Sans 8")
     (set-face-attribute 'Info-quoted nil
-                        :font "IBM 3270 Medium 10"
+                        :font "IBM 3270 Medium 11"
                         :inherit font-lock-keyword-face))
 #+END_SRC
 
@@ -181,6 +181,13 @@ Miscellaneous things that don't fit anywhere else.
     :ensure t
     :config (global-company-mode 1)
     :diminish company-mode)
+#+END_SRC
+
+** ESS
+#+BEGIN_SRC emacs-lisp
+  (use-package ess-site
+    :ensure ess
+    :commands R)
 #+END_SRC
 
 ** Flycheck
