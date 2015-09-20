@@ -116,7 +116,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package tao-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'tao-yang 'no-confirm))
+    (load-theme 'majapahit-light 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -357,6 +357,15 @@ Miscellaneous things that don't fit anywhere else.
       :commands (sml-mode sml-run))
     (use-package ob-sml
       :ensure t))
+#+END_SRC
+
+** Unicode Fonts
+
+#+BEGIN_SRC emacs-lisp
+  (use-package unicode-fonts
+    :ensure t
+    :config
+    (unicode-fonts-setup))
 #+END_SRC
 
 * Footer
