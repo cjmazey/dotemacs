@@ -238,6 +238,30 @@ Miscellaneous things that don't fit anywhere else.
       :ensure helm-ls-git))
 #+END_SRC
 
+** Lean Prover
+
+#+BEGIN_SRC emacs-lisp
+  (eval-and-compile
+    (defvar lean-rootdir
+      "/home/mu/src/github/leanprover/install")
+    (defvar lean-emacs-path
+      (concat lean-rootdir "/share/emacs/site-lisp/lean")))
+
+  (use-package lean-mode
+    :load-path lean-emacs-path
+    :mode "\\.h?lean\\'"
+    :config
+    (use-package company :ensure t)
+    (use-package dash :ensure t)
+    (use-package dash-functional :ensure t)
+    (use-package flycheck :ensure t)
+    (use-package f :ensure t)
+    (use-package fill-column-indicator :ensure t)
+    (use-package s :ensure t)
+    (use-package lua-mode :ensure t)
+    (use-package mmm-mode :ensure t))
+#+END_SRC
+
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
