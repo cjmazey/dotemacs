@@ -270,6 +270,14 @@ Miscellaneous things that don't fit anywhere else.
     :bind (("C-x g" . magit-status)))
 #+END_SRC
 
+** Markdown
+
+#+BEGIN_SRC emacs-lisp
+  (use-package markdown-mode
+    :ensure t
+    :mode "\\.md\\'")
+#+END_SRC
+
 ** Ocaml
 
 #+BEGIN_SRC emacs-lisp
