@@ -243,7 +243,7 @@ Miscellaneous things that don't fit anywhere else.
 #+BEGIN_SRC emacs-lisp
   (eval-and-compile
     (defvar lean-rootdir
-      "/home/mu/src/github/leanprover/install")
+      "~/src/leanprover/usr")
     (defvar lean-emacs-path
       (concat lean-rootdir "/share/emacs/site-lisp/lean")))
 
