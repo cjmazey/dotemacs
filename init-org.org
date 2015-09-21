@@ -84,7 +84,7 @@ Miscellaneous things that don't fit anywhere else.
             (tool-bar-lines . 0)))
     (setq indent-tabs-mode nil)
     (setq inhibit-startup-echo-area-message t)
-    (setq inhibit-startup-message t)
+    ;(setq inhibit-startup-message t)
     (setq major-mode 'text-mode)
     (setq make-backup-files nil)
     (setq mouse-wheel-progressive-speed nil)
@@ -116,7 +116,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package tao-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'majapahit-light 'no-confirm))
+    (load-theme 'spacemacs-dark 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -126,13 +126,13 @@ Miscellaneous things that don't fit anywhere else.
     :defer t
     :init
     (set-face-attribute 'default nil
-                        :font "IBM 3270 Medium 11")
+                        :font "IBM 3270 Medium 14")
     (set-face-attribute 'fixed-pitch nil
-                        :font "IBM 3270 Medium 11")
+                        :font "IBM 3270 Medium 14")
     (set-face-attribute 'variable-pitch nil
-                        :font "Noto Sans 8")
+                        :font "Noto Sans 12")
     (set-face-attribute 'Info-quoted nil
-                        :font "IBM 3270 Medium 11"
+                        :font "IBM 3270 Medium 12"
                         :inherit font-lock-keyword-face)
     (defun cjm/set-default-face-height (n)
       (interactive "ndefault face height: ")
@@ -276,6 +276,8 @@ Miscellaneous things that don't fit anywhere else.
       (use-package lua-mode :ensure t)
       (use-package mmm-mode :ensure t))
 #+END_SRC
+
+*** TODO Make that command create temporary directories
 
 ** Magit
 
