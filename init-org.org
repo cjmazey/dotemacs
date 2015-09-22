@@ -295,6 +295,14 @@ Miscellaneous things that don't fit anywhere else.
     :mode "\\.md\\'")
 #+END_SRC
 
+** Maxima
+
+#+BEGIN_SRC emacs-lisp
+  (use-package maxima
+    :mode ("\\.mac\\'" . maxima-mode)
+    :interpreter ("maxima" . maxima))
+#+END_SRC
+
 ** Ocaml
 
 #+BEGIN_SRC emacs-lisp
