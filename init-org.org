@@ -72,7 +72,6 @@ Miscellaneous things that don't fit anywhere else.
     (add-hook 'before-save-hook 'delete-trailing-whitespace)
     (add-hook 'text-mode-hook 'auto-fill-mode)
     (column-number-mode 1)
-    (global-eldoc-mode 1)
     (global-hl-line-mode 1)
     (set-language-environment "UTF-8")
     (setq auto-save-default nil)
@@ -188,6 +187,14 @@ Miscellaneous things that don't fit anywhere else.
     :diminish company-mode)
 #+END_SRC
 
+** ElDoc
+
+#+BEGIN_SRC emacs-lisp
+  (use-package eldoc
+    :diminish eldoc-mode
+    :config (global-eldoc-mode 1))
+#+END_SRC
+
 ** ESS
 #+BEGIN_SRC emacs-lisp
   (use-package ess-site
@@ -276,7 +283,7 @@ Miscellaneous things that don't fit anywhere else.
       (use-package fill-column-indicator :ensure t)
       (use-package s :ensure t)
       (use-package lua-mode :ensure t)
-      (use-package mmm-mode :ensure t))
+      (use-package mmm-mode :ensure t :diminish mmm-mode))
 #+END_SRC
 
 *** TODO Make that command create temporary directories
