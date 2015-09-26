@@ -106,6 +106,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package autumn-light-theme :ensure t :defer t)
     (use-package faff-theme :ensure t :defer t)
     (use-package farmhouse-theme :ensure t :defer t)
+    (use-package green-phosphor-theme :ensure t :defer t)
     (use-package leuven-theme :ensure t :defer t)
     (use-package majapahit-theme :ensure t :defer t)
     (use-package moe-theme :ensure t :commands (moe-dark moe-light))
@@ -115,9 +116,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package tao-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    ;(load-theme 'spacemacs-dark 'no-confirm)
-    (moe-dark)
-    (message "Theme loaded"))
+    (load-theme 'majapahit-light 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -352,6 +351,14 @@ Miscellaneous things that don't fit anywhere else.
            ("C-c o b" . org-iswitchb)
            ("C-c o c" . org-capture)
            ("C-c o l" . org-store-link)))
+#+END_SRC
+
+** Popwin
+
+#+BEGIN_SRC emacs-lisp
+  (use-package popwin
+    :ensure t
+    :config (popwin-mode 1))
 #+END_SRC
 
 ** Proof General
