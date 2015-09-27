@@ -102,21 +102,31 @@ Miscellaneous things that don't fit anywhere else.
   (use-package theme-meta
     :defer t
     :init
+    (use-package alect-themes :ensure t :defer t)
+    (use-package ample-theme :ensure t :defer t)
     (use-package apropospriate-theme :ensure t :defer t)
     (use-package autumn-light-theme :ensure t :defer t)
+    (use-package base16-theme :ensure t :defer t)
+    (use-package colorsarenice-theme :ensure t :defer t)
     (use-package faff-theme :ensure t :defer t)
     (use-package farmhouse-theme :ensure t :defer t)
     (use-package green-phosphor-theme :ensure t :defer t)
+    (use-package hemisu-theme :ensure t :defer t)
     (use-package leuven-theme :ensure t :defer t)
     (use-package majapahit-theme :ensure t :defer t)
+    (use-package material-theme :ensure t :defer t)
+    (use-package minimal-theme :ensure t :defer t)
     (use-package moe-theme :ensure t :commands (moe-dark moe-light))
     (use-package monokai-theme :ensure t :defer t)
     (use-package solarized-theme :ensure t :defer t)
     (use-package spacemacs-theme :ensure t :defer t)
+    (use-package stekene-theme :ensure t :defer t)
+    (use-package sublime-themes :ensure t :defer t)
     (use-package tao-theme :ensure t :defer t)
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
-    (load-theme 'majapahit-light 'no-confirm))
+    (use-package zonokai-theme :ensure t :defer t)
+    (load-theme 'tao-yang 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -249,6 +259,18 @@ Miscellaneous things that don't fit anywhere else.
       :ensure helm-ls-git))
 #+END_SRC
 
+** Idris
+
+#+BEGIN_SRC emacs-lisp
+  (use-package idris-meta
+    :defer t
+    :init
+    (use-package idris-mode
+      :ensure t)
+    (use-package helm-idris
+      :ensure t))
+#+END_SRC
+
 ** Lean Prover
 
 #+BEGIN_SRC emacs-lisp
@@ -359,6 +381,15 @@ Miscellaneous things that don't fit anywhere else.
   (use-package popwin
     :ensure t
     :config (popwin-mode 1))
+#+END_SRC
+
+** Powerline
+
+#+BEGIN_SRC emacs-lisp
+  (use-package powerline
+    :disabled t
+    :ensure t
+    :config (powerline-default-theme))
 #+END_SRC
 
 ** Proof General
