@@ -90,6 +90,7 @@ Miscellaneous things that don't fit anywhere else.
     (setq mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
     (setq require-final-newline t)
     (setq scroll-conservatively 101)
+    (setq visible-bell t)
     (show-paren-mode 1)
     (size-indication-mode 1))
 #+END_SRC
@@ -124,7 +125,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'tao-yang 'no-confirm))
+    (load-theme 'majapahit-light 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -215,6 +216,15 @@ Miscellaneous things that don't fit anywhere else.
   (use-package flycheck
     :ensure t
     :config (global-flycheck-mode 1))
+#+END_SRC
+
+** God mode
+
+#+BEGIN_SRC emacs-lisp
+  (use-package god-mode
+    :disabled t
+    :ensure t)
+
 #+END_SRC
 
 ** Golden Ratio
