@@ -135,13 +135,13 @@ Miscellaneous things that don't fit anywhere else.
     :defer t
     :init
     (set-face-attribute 'default nil
-                        :font "IBM 3270 Medium 12")
+                        :font "IBM 3270 Medium 10")
     (set-face-attribute 'fixed-pitch nil
-                        :font "IBM 3270 Medium 12")
+                        :font "IBM 3270 Medium 10")
     (set-face-attribute 'variable-pitch nil
-                        :font "Noto Sans 10")
+                        :font "Noto Sans 8")
     (set-face-attribute 'Info-quoted nil
-                        :font "IBM 3270 Medium 10"
+                        :font "IBM 3270 Medium 8"
                         :inherit font-lock-keyword-face)
     (defun cjm/set-default-face-height (n)
       (interactive "ndefault face height: ")
@@ -385,7 +385,8 @@ Miscellaneous things that don't fit anywhere else.
     (setq org-agenda-files
           '("~/.emacs.d/private/read.org"
             "~/.emacs.d/private/watch.org"))
-    (setq org-default-notes-file "~/.emacs.d/private/notes.org"))
+    (setq org-default-notes-file "~/.emacs.d/private/notes.org")
+    (setq org-directory "~/.emacs.d/private"))
 #+END_SRC
 
 ** Popwin
