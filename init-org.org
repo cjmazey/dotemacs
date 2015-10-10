@@ -386,7 +386,8 @@ Miscellaneous things that don't fit anywhere else.
           '("~/.emacs.d/private/read.org"
             "~/.emacs.d/private/watch.org"))
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
-    (setq org-directory "~/.emacs.d/private"))
+    (setq org-directory "~/.emacs.d/private")
+    (setq org-refile-use-outline-path t))
 #+END_SRC
 
 ** Popwin
