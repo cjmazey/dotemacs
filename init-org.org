@@ -389,11 +389,12 @@ Miscellaneous things that don't fit anywhere else.
            ("C-c o c" . org-capture)
            ("C-c o l" . org-store-link))
     :config
+    (setq org-directory "~/.emacs.d/private")
     (setq org-agenda-files
           '("~/.emacs.d/private/read.org"
             "~/.emacs.d/private/watch.org"))
+    (setq org-archive-location "~/.emacs.d/private/archive.org::")
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
-    (setq org-directory "~/.emacs.d/private")
     (setq org-refile-use-outline-path t))
 #+END_SRC
 
