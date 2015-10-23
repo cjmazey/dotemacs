@@ -76,7 +76,7 @@ Miscellaneous things that don't fit anywhere else.
     (set-language-environment "UTF-8")
     (setq auto-save-default nil)
     (setq default-frame-alist
-          '((width . 80)
+          '((width . 100)
             (height . 40)
             (menu-bar-lines . 0)
             (vertical-scroll-bars . nil)
@@ -112,6 +112,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package farmhouse-theme :ensure t :defer t)
     (use-package green-phosphor-theme :ensure t :defer t)
     (use-package hemisu-theme :ensure t :defer t)
+    (use-package iodine-theme :ensure t :defer t)
     (use-package leuven-theme :ensure t :defer t)
     (use-package majapahit-theme :ensure t :defer t)
     (use-package material-theme :ensure t :defer t)
@@ -125,7 +126,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'spacemacs-light 'no-confirm))
+    (load-theme 'solarized-dark 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -161,6 +162,17 @@ Miscellaneous things that don't fit anywhere else.
 #+END_SRC
 
 * Packages
+
+** Ace-window
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :ensure ace-window
+    :bind ("M-p" . ace-window)
+    :config
+    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+    (setq aw-dispatch-always t))
+#+END_SRC
 
 ** Agda
 
