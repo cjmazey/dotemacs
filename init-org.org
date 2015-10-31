@@ -126,7 +126,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'solarized-dark 'no-confirm))
+    (load-theme 'material-light 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -135,15 +135,16 @@ Miscellaneous things that don't fit anywhere else.
   (use-package face-meta
     :defer t
     :init
-    (set-face-attribute 'default nil
-                        :font "IBM 3270 Medium 11")
-    (set-face-attribute 'fixed-pitch nil
-                        :font "IBM 3270 Medium 11")
-    (set-face-attribute 'variable-pitch nil
-                        :font "Noto Sans 9")
-    (set-face-attribute 'Info-quoted nil
-                        :font "IBM 3270 Medium 9"
-                        :inherit font-lock-keyword-face)
+    (let ((font "IBM 3270 Medium"))
+      (set-face-attribute 'default nil
+                          :font (concat font " 10"))
+      (set-face-attribute 'fixed-pitch nil
+                          :font (concat font " 10"))
+      (set-face-attribute 'variable-pitch nil
+                          :font "Noto Sans 8")
+      (set-face-attribute 'Info-quoted nil
+                          :font (concat font " 8")
+                          :inherit font-lock-keyword-face))
     (defun cjm/set-default-face-height (n)
       (interactive "ndefault face height: ")
       (set-face-attribute 'default nil :height n)))
