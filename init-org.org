@@ -320,7 +320,6 @@ Miscellaneous things that don't fit anywhere else.
         (find-file filename)))
     :init
     (bind-key "C-c \"" 'cjm/org-edit-lean-code org-mode-map)
-    :config
     (use-package company :ensure t)
     (use-package dash :ensure t)
     (use-package dash-functional :ensure t)
