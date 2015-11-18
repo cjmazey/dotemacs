@@ -199,6 +199,21 @@ Miscellaneous things that don't fit anywhere else.
     :ensure auctex)
 #+END_SRC
 
+** Axiom
+
+#+BEGIN_SRC emacs-lisp
+  (use-package axiom-meta
+    :defer t
+    :init
+    (use-package axiom-environment
+      :ensure t
+      :config
+      (setq axiom-process-program "~/src/fricas/usr/bin/fricas -nosman")
+      (setq axiom-process-spad-source-dirs "~/src/fricas/usr/lib/fricas/target/x86_64-unknown-linux/src/algebra"))
+    (use-package ob-axiom
+      :ensure t))
+#+END_SRC
+
 ** Company
 
 #+BEGIN_SRC emacs-lisp
