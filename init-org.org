@@ -126,7 +126,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'material-light 'no-confirm))
+    (load-theme 'majapahit-dark 'no-confirm))
 #+END_SRC
 
 ** Fonts
@@ -137,13 +137,13 @@ Miscellaneous things that don't fit anywhere else.
     :init
     (let ((font "IBM 3270 Medium"))
       (set-face-attribute 'default nil
-                          :font (concat font " 10"))
+                          :font (concat font " 11"))
       (set-face-attribute 'fixed-pitch nil
-                          :font (concat font " 10"))
+                          :font (concat font " 11"))
       (set-face-attribute 'variable-pitch nil
-                          :font "Noto Sans 8")
+                          :font "Noto Sans 9")
       (set-face-attribute 'Info-quoted nil
-                          :font (concat font " 8")
+                          :font (concat font " 9")
                           :inherit font-lock-keyword-face))
     (defun cjm/set-default-face-height (n)
       (interactive "ndefault face height: ")
@@ -203,6 +203,7 @@ Miscellaneous things that don't fit anywhere else.
 
 #+BEGIN_SRC emacs-lisp
   (use-package axiom-meta
+    :disabled t
     :defer t
     :init
     (use-package axiom-environment
@@ -422,7 +423,10 @@ Miscellaneous things that don't fit anywhere else.
             "~/.emacs.d/private/watch.org"))
     (setq org-archive-location "~/.emacs.d/private/archive.org::")
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
-    (setq org-refile-use-outline-path t))
+    (setq org-refile-use-outline-path t)
+    (setq org-capture-templates
+          '(("p" "Poem" entry (file "~/Writing/writing.org")
+             "* UNPUBLISHED %^U\n   %i%?\n\n" :empty-lines 1))))
 #+END_SRC
 
 ** Popwin
