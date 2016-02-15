@@ -128,7 +128,8 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'material-light 'no-confirm))
+    ;(load-theme 'material-light 'no-confirm)
+    (moe-light))
 #+END_SRC
 
 ** Fonts
@@ -421,13 +422,12 @@ Miscellaneous things that don't fit anywhere else.
     :config
     (setq org-directory "~/.emacs.d/private")
     (setq org-agenda-files
-          '("~/.emacs.d/private/read.org"
-            "~/.emacs.d/private/watch.org"))
+          '("~/.emacs.d/private/agenda.org"))
     (setq org-archive-location "~/.emacs.d/private/archive.org::")
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
     (setq org-refile-use-outline-path t)
     (setq org-capture-templates
-          '(("p" "Poem" entry (file "~/Writing/writing.org")
+          '(("p" "Poem" entry (file ".emacs.d/private/poems.org")
              "* UNPUBLISHED %^U\n   %i%?\n\n" :empty-lines 1))))
 #+END_SRC
 
