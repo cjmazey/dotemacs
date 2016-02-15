@@ -427,8 +427,14 @@ Miscellaneous things that don't fit anywhere else.
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
     (setq org-refile-use-outline-path t)
     (setq org-capture-templates
-          '(("p" "Poem" entry (file ".emacs.d/private/poems.org")
-             "* UNPUBLISHED %^U\n   %i%?\n\n" :empty-lines 1))))
+          '(("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
+             "* UNPUBLISHED %^U\n   %i%?\n\n" :empty-lines 1)))
+    (setq org-latex-create-formula-image-program 'imagemagick)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (maxima . t))))
+
 #+END_SRC
 
 ** Popwin
