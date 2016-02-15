@@ -129,7 +129,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
     ;(load-theme 'material-light 'no-confirm)
-    (moe-light))
+    (moe-dark))
 #+END_SRC
 
 ** Fonts
@@ -427,7 +427,9 @@ Miscellaneous things that don't fit anywhere else.
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
     (setq org-refile-use-outline-path t)
     (setq org-capture-templates
-          '(("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
+          '(("t" "Task" entry (file+headline "" "Tasks")
+             "* TODO %?\n  %u\n  %a")
+            ("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
              "* UNPUBLISHED %^U\n   %i%?\n\n" :empty-lines 1)))
     (setq org-latex-create-formula-image-program 'imagemagick)
     (org-babel-do-load-languages
