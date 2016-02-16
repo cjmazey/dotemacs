@@ -427,7 +427,7 @@ Miscellaneous things that don't fit anywhere else.
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
     (setq org-refile-use-outline-path t)
     (setq org-capture-templates
-          '(("t" "Task" entry (file+headline "" "Tasks")
+          '(("t" "Task" entry (file+headline "~/.emacs.d/private/agenda.org" "Tasks")
              "* TODO %?\n  %u\n  %a")
             ("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
              "* UNPUBLISHED %^U\n   %i%?\n\n" :empty-lines 1)))
