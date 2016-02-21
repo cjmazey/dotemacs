@@ -128,7 +128,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'majapahit-light 'no-confirm))
+    (load-theme 'leuven 'no-confirm))
 
 #+END_SRC
 
@@ -214,7 +214,6 @@ Miscellaneous things that don't fit anywhere else.
 
 #+BEGIN_SRC emacs-lisp
   (use-package axiom-meta
-    :disabled t
     :defer t
     :init
     (use-package axiom-environment
@@ -438,7 +437,7 @@ Miscellaneous things that don't fit anywhere else.
           '(("t" "Task" entry (file+headline "~/.emacs.d/private/agenda.org" "Tasks")
              "* TODO %?\n  %u\n  %a")
             ("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
-             "* UNPUBLISHED %^U\n   %i%?\n\n" :empty-lines 1)))
+             "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1)))
     (setq org-latex-create-formula-image-program 'imagemagick)
     (org-babel-do-load-languages
      'org-babel-load-languages
