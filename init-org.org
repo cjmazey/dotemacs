@@ -44,6 +44,8 @@ Set up =package=.
   (require 'package)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.org/packages/"))
+  (add-to-list 'package-archives
+               '("org" . "http://orgmode.org/elpa/"))
   (package-initialize)
 #+END_SRC
 
@@ -245,8 +247,12 @@ Miscellaneous things that don't fit anywhere else.
 ** ESS
 #+BEGIN_SRC emacs-lisp
   (use-package ess-site
-    :ensure ess
-    :commands R)
+    :defer t
+    :init
+    (use-package ess
+      :ensure t)
+    (use-package polymode
+      :ensure t))
 #+END_SRC
 
 ** Flycheck
@@ -422,6 +428,8 @@ Miscellaneous things that don't fit anywhere else.
 
 #+BEGIN_SRC emacs-lisp
   (use-package org
+    :pin org
+    :ensure org-plus-contrib
     :bind (("C-c o a" . org-agenda)
            ("C-c o b" . org-iswitchb)
            ("C-c o c" . org-capture)
