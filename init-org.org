@@ -220,11 +220,13 @@ Miscellaneous things that don't fit anywhere else.
     :init
     (use-package axiom-environment
       :ensure t
+      :commands run-axiom
       :config
       (setq axiom-process-program "~/src/fricas/usr/bin/fricas -nosman")
       (setq axiom-process-spad-source-dirs "~/src/fricas/usr/lib/fricas/target/x86_64-unknown-linux/src/algebra"))
     (use-package ob-axiom
-      :ensure t))
+      :ensure t
+      :defer t))
 #+END_SRC
 
 ** Company
@@ -247,12 +249,8 @@ Miscellaneous things that don't fit anywhere else.
 ** ESS
 #+BEGIN_SRC emacs-lisp
   (use-package ess-site
-    :defer t
-    :init
-    (use-package ess
-      :ensure t)
-    (use-package polymode
-      :ensure t))
+    :ensure ess
+    :commands R)
 #+END_SRC
 
 ** Flycheck
