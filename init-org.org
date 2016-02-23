@@ -221,7 +221,8 @@ Miscellaneous things that don't fit anywhere else.
     (use-package axiom-environment
       :ensure t
       :commands run-axiom
-      :config
+      :bind ("C-c a" . axiom-selector)
+      :init
       (setq axiom-process-program "~/src/fricas/usr/bin/fricas -nosman")
       (setq axiom-process-spad-source-dirs "~/src/fricas/usr/lib/fricas/target/x86_64-unknown-linux/src/algebra"))
     (use-package ob-axiom
@@ -450,6 +451,12 @@ Miscellaneous things that don't fit anywhere else.
      '((emacs-lisp . t)
        (maxima . t))))
 
+#+END_SRC
+
+** Polymode
+#+BEGIN_SRC emacs-lisp
+  (use-package polymode
+    :ensure t)
 #+END_SRC
 
 ** Popwin
