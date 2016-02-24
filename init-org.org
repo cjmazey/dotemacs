@@ -146,10 +146,10 @@ Miscellaneous things that don't fit anywhere else.
       (set-face-attribute 'fixed-pitch nil
                           :font (concat font " 10"))
       (set-face-attribute 'variable-pitch nil
-                          :font "Noto Sans 8")
-      (set-face-attribute 'Info-quoted nil
-                          :font (concat font " 8")
-                          :inherit font-lock-keyword-face))
+                          :font "Noto Sans 8"))
+  ;    (set-face-attribute 'Info-quoted nil
+  ;                        :font (concat font " 8")
+  ;                        :inherit font-lock-keyword-face))
     (defun cjm/set-default-face-height (n)
       (interactive "ndefault face height: ")
       (set-face-attribute 'default nil :height n)))
@@ -242,9 +242,9 @@ Miscellaneous things that don't fit anywhere else.
 ** ElDoc
 
 #+BEGIN_SRC emacs-lisp
-  (use-package eldoc
-    :diminish eldoc-mode
-    :config (global-eldoc-mode 1))
+    (use-package eldoc
+      :diminish eldoc-mode)
+  ;    :config (global-eldoc-mode 1))
 #+END_SRC
 
 ** ESS
@@ -426,31 +426,34 @@ Miscellaneous things that don't fit anywhere else.
 ** Org
 
 #+BEGIN_SRC emacs-lisp
-  (use-package org
-    :pin org
-    :ensure org-plus-contrib
-    :bind (("C-c o a" . org-agenda)
-           ("C-c o b" . org-iswitchb)
-           ("C-c o c" . org-capture)
-           ("C-c o l" . org-store-link))
-    :config
-    (setq org-directory "~/.emacs.d/private")
-    (setq org-agenda-files
-          '("~/.emacs.d/private/agenda.org"))
-    (setq org-archive-location "~/.emacs.d/private/archive.org::")
-    (setq org-default-notes-file "~/.emacs.d/private/notes.org")
-    (setq org-refile-use-outline-path t)
-    (setq org-capture-templates
-          '(("t" "Task" entry (file+headline "~/.emacs.d/private/agenda.org" "Tasks")
-             "* TODO %?\n  %u\n  %a")
-            ("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
-             "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1)))
-    (setq org-latex-create-formula-image-program 'imagemagick)
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (maxima . t))))
-
+    (use-package org
+  ;    :pin org
+  ;    :ensure org-plus-contrib
+      :bind (("C-c o a" . org-agenda)
+             ("C-c o b" . org-iswitchb)
+             ("C-c o c" . org-capture)
+             ("C-c o l" . org-store-link))
+      :config
+      (setq org-directory "~/.emacs.d/private")
+      (setq org-agenda-files
+            '("~/.emacs.d/private/agenda.org"))
+      (setq org-archive-location "~/.emacs.d/private/archive.org::")
+      (setq org-default-notes-file "~/.emacs.d/private/notes.org")
+      (setq org-refile-use-outline-path t)
+      (setq org-capture-templates
+            '(("t" "Task" entry (file+headline "~/.emacs.d/private/agenda.org" "Tasks")
+               "* TODO %?\n  %u\n  %a")
+              ("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
+               "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1)))
+      (setq org-latex-create-formula-image-program 'imagemagick)
+      (add-to-list 'org-latex-packages-alist '("" "tikz" t))
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((emacs-lisp . t)
+         (axiom . t)
+         (latex . t)
+         (maxima . t)
+         (R . t))))
 #+END_SRC
 
 ** Polymode
