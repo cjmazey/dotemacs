@@ -6,15 +6,12 @@
 
 Execute to create =init.el=.
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no :results silent
   (org-babel-tangle-file
    (expand-file-name "init.org" user-emacs-directory)
    (expand-file-name "init.el" user-emacs-directory)
    "emacs-lisp")
 #+END_SRC
-
-#+RESULTS:
-| /home/mu/.emacs.d/init.el |
 
 * Initialization
 
@@ -171,8 +168,7 @@ Miscellaneous things that don't fit anywhere else.
            ("C-c o l" . org-store-link))
     :config
     (setq org-directory "~/.emacs.d/private")
-    (setq org-agenda-files
-          '("~/.emacs.d/private/agenda.org"))
+    (setq org-agenda-files '("~/.emacs.d/private/agenda.org"))
     (setq org-archive-location "~/.emacs.d/private/archive.org::")
     (setq org-default-notes-file "~/.emacs.d/private/notes.org")
     (setq org-refile-use-outline-path t)
@@ -189,7 +185,8 @@ Miscellaneous things that don't fit anywhere else.
        (axiom . t)
        (latex . t)
        (maxima . t)
-       (R . t))))
+       (R . t)))
+    (require 'org-habit))
 #+END_SRC
 
 ** Ace-window
