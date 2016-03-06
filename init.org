@@ -112,6 +112,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package minimal-theme :ensure t :defer t)
     (use-package moe-theme :ensure t :commands (moe-dark moe-light))
     (use-package monokai-theme :ensure t :defer t)
+    (use-package org-beautify-theme :ensure t :defer t)
     (use-package paper-theme :ensure t :defer t)
     (use-package solarized-theme :ensure t :defer t)
     (use-package spacemacs-theme :ensure t :defer t)
@@ -120,7 +121,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'majapahit-light 'no-confirm))
+    (load-theme 'tao-yang 'no-confirm))
 
 #+END_SRC
 
@@ -132,13 +133,13 @@ Miscellaneous things that don't fit anywhere else.
     :init
     (let ((font "IBM 3270 Medium"))
       (set-face-attribute 'default nil
-                          :font (concat font " 10"))
+                          :font (concat font " 12"))
       (set-face-attribute 'fixed-pitch nil
-                          :font (concat font " 10"))
+                          :font (concat font " 12"))
       (set-face-attribute 'variable-pitch nil
-                          :font "Noto Sans 8")
+                          :font "Noto Sans 10")
       (set-face-attribute 'Info-quoted nil
-                          :font (concat font " 8")
+                          :font (concat font " 10")
                           :inherit font-lock-keyword-face)))
 #+END_SRC
 
@@ -186,7 +187,8 @@ Miscellaneous things that don't fit anywhere else.
        (latex . t)
        (maxima . t)
        (R . t)))
-    (require 'org-habit))
+    (require 'org-habit)
+    (setq org-habit-graph-column 69))
 #+END_SRC
 
 ** Ace-window
@@ -412,6 +414,7 @@ Miscellaneous things that don't fit anywhere else.
        "/emacs/site-lisp")))
 
   (use-package ocaml-meta
+    :disabled t
     :defer t
     :init
     (use-package tuareg
