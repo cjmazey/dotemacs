@@ -121,7 +121,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'leuven 'no-confirm))
+    (load-theme 'material-light 'no-confirm))
 
 #+END_SRC
 
@@ -180,6 +180,11 @@ Miscellaneous things that don't fit anywhere else.
              "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1)))
     (setq org-latex-create-formula-image-program 'imagemagick)
     (add-to-list 'org-latex-packages-alist '("" "tikz" t))
+    (use-package ox-html
+      :defer t
+      :config
+      (add-to-list 'org-html-mathjax-options
+                   '(path "http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML")))
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((emacs-lisp . t)
