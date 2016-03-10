@@ -184,7 +184,9 @@ Miscellaneous things that don't fit anywhere else.
       :defer t
       :config
       (add-to-list 'org-html-mathjax-options
-                   '(path "http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML")))
+                   '(path "http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML"))
+          (add-to-list 'org-html-infojs-options
+                   '(path . "http://localhost/org-info.js")))
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((emacs-lisp . t)
