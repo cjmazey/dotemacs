@@ -95,6 +95,7 @@ Miscellaneous things that don't fit anywhere else.
   (use-package theme-meta
     :defer t
     :init
+    (use-package abyss-theme :ensure t :defer t)
     (use-package alect-themes :ensure t :defer t)
     (use-package ample-theme :ensure t :defer t)
     (use-package apropospriate-theme :ensure t :defer t)
@@ -185,7 +186,7 @@ Miscellaneous things that don't fit anywhere else.
       :config
       (add-to-list 'org-html-mathjax-options
                    '(path "http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML"))
-          (add-to-list 'org-html-infojs-options
+      (add-to-list 'org-html-infojs-options
                    '(path . "http://localhost/org-info.js")))
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -252,8 +253,10 @@ Miscellaneous things that don't fit anywhere else.
       :commands run-axiom
       :bind ("C-c a" . axiom-selector)
       :init
-      (setq axiom-process-program "~/src/fricas/usr/bin/fricas -nosman")
-      (setq axiom-process-spad-source-dirs "~/src/fricas/usr/lib/fricas/target/x86_64-unknown-linux/src/algebra"))
+      (setq axiom-process-program
+            "~/src/fricas/usr/bin/fricas -nosman")
+      (setq axiom-process-spad-source-dirs
+            "~/src/fricas/usr/lib/fricas/target/x86_64-unknown-linux/src/algebra"))
     (use-package ob-axiom
       :ensure t
       :defer t))
