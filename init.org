@@ -122,7 +122,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'material-light 'no-confirm))
+    (load-theme 'spacemacs-dark 'no-confirm))
 
 #+END_SRC
 
@@ -190,11 +190,12 @@ Miscellaneous things that don't fit anywhere else.
                    '(path . "http://localhost/org-info.js")))
     (org-babel-do-load-languages
      'org-babel-load-languages
-     '((emacs-lisp . t)
+     '((R . t)
+       (asymptote . t)
        (axiom . t)
+       (emacs-lisp . t)
        (latex . t)
-       (maxima . t)
-       (R . t)))
+       (maxima . t)))
     (require 'org-habit)
     (setq org-habit-graph-column 55))
 #+END_SRC
@@ -225,6 +226,15 @@ Miscellaneous things that don't fit anywhere else.
       :commands agda2-mode)
     (use-package agda-input
       :load-path agda2-directory))
+#+END_SRC
+
+** Asymptote
+
+#+BEGIN_SRC emacs-lisp
+  (use-package asy-mode
+    :load-path "/usr/share/asymptote"
+    :commands (asy-mode lasy-mode asy-insinuate-latex)
+    :mode ("\\.asy$" . asy-mode))
 #+END_SRC
 
 ** AUCTex
