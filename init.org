@@ -122,7 +122,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'spacemacs-dark 'no-confirm))
+    (load-theme 'spacemacs-light 'no-confirm))
 
 #+END_SRC
 
@@ -501,15 +501,22 @@ Miscellaneous things that don't fit anywhere else.
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 #+END_SRC
 
-** Slime
+** Slime/Quicklisp
 
 #+BEGIN_SRC emacs-lisp
   (use-package slime
+    :disabled t
     :ensure t
     :commands (slime slime-mode)
     :init
     (setq inferior-lisp-program "sbcl")
     (setq slime-contribs '(slime-fancy)))
+
+  (use-package quicklisp
+    :init
+    (load (expand-file-name "~/src/quicklisp/slime-helper.el"))
+    (setq inferior-lisp-program "sbcl")
+    (setq common-lisp-hyperspec-root "~/Books/PL/Lisp/HyperSpec"))
 #+END_SRC
 
 ** SML
