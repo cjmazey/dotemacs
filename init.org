@@ -122,7 +122,7 @@ Miscellaneous things that don't fit anywhere else.
     (use-package ubuntu-theme :ensure t :defer t)
     (use-package zenburn-theme :ensure t :defer t)
     (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'spacemacs-light 'no-confirm))
+    (load-theme 'tao-yang 'no-confirm))
 
 #+END_SRC
 
@@ -134,13 +134,13 @@ Miscellaneous things that don't fit anywhere else.
     :init
     (let ((font "IBM 3270 Medium"))
       (set-face-attribute 'default nil
-                          :font (concat font " 12"))
+                          :font (concat font " 11"))
       (set-face-attribute 'fixed-pitch nil
-                          :font (concat font " 12"))
+                          :font (concat font " 11"))
       (set-face-attribute 'variable-pitch nil
-                          :font "Noto Sans 10")
+                          :font "Noto Sans 9")
       (set-face-attribute 'Info-quoted nil
-                          :font (concat font " 10")
+                          :font (concat font " 9")
                           :inherit font-lock-keyword-face)))
 #+END_SRC
 
@@ -513,6 +513,7 @@ Miscellaneous things that don't fit anywhere else.
     (setq slime-contribs '(slime-fancy)))
 
   (use-package quicklisp
+    :defer t
     :init
     (load (expand-file-name "~/src/quicklisp/slime-helper.el"))
     (setq inferior-lisp-program "sbcl")
