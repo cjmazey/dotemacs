@@ -92,38 +92,13 @@ Miscellaneous things that don't fit anywhere else.
 ** Themes
 
 #+BEGIN_SRC emacs-lisp
-  (use-package theme-meta
-    :defer t
-    :init
-    (use-package abyss-theme :ensure t :defer t)
-    (use-package alect-themes :ensure t :defer t)
-    (use-package ample-theme :ensure t :defer t)
-    (use-package apropospriate-theme :ensure t :defer t)
-    (use-package autumn-light-theme :ensure t :defer t)
-    (use-package colorsarenice-theme :ensure t :defer t)
-    (use-package faff-theme :ensure t :defer t)
-    (use-package farmhouse-theme :ensure t :defer t)
-    (use-package green-phosphor-theme :ensure t :defer t)
-    (use-package hemisu-theme :ensure t :defer t)
-    (use-package hydandata-light-theme :ensure t :defer t)
-    (use-package iodine-theme :ensure t :defer t)
-    (use-package leuven-theme :ensure t :defer t)
-    (use-package majapahit-theme :ensure t :defer t)
-    (use-package material-theme :ensure t :defer t)
-    (use-package minimal-theme :ensure t :defer t)
-    (use-package moe-theme :ensure t :commands (moe-dark moe-light))
-    (use-package monokai-theme :ensure t :defer t)
-    (use-package org-beautify-theme :ensure t :defer t)
-    (use-package paper-theme :ensure t :defer t)
-    (use-package solarized-theme :ensure t :defer t)
-    (use-package spacemacs-theme :ensure t :defer t)
-    (use-package stekene-theme :ensure t :defer t)
-    (use-package tao-theme :ensure t :defer t)
-    (use-package ubuntu-theme :ensure t :defer t)
-    (use-package zenburn-theme :ensure t :defer t)
-    (use-package zonokai-theme :ensure t :defer t)
-    (load-theme 'tao-yang 'no-confirm))
-
+  (use-package leuven-theme :ensure t :defer t)
+  (use-package majapahit-theme :ensure t :defer t)
+  (use-package material-theme :ensure t :defer t)
+  (use-package solarized-theme :ensure t :defer t)
+  (use-package spacemacs-theme :ensure t :defer t)
+  (use-package tao-theme :ensure t :defer t)
+  (load-theme 'spacemacs-light 'no-confirm)
 #+END_SRC
 
 ** Fonts
@@ -211,32 +186,6 @@ Miscellaneous things that don't fit anywhere else.
     (setq aw-dispatch-always t))
 #+END_SRC
 
-** Agda
-
-#+BEGIN_SRC emacs-lisp
-  (eval-and-compile
-    (defvar agda2-directory
-      (file-name-directory (shell-command-to-string "agda-mode locate"))))
-
-  (use-package agda-meta
-    :defer t
-    :init
-    (use-package agda2
-      :load-path agda2-directory
-      :commands agda2-mode)
-    (use-package agda-input
-      :load-path agda2-directory))
-#+END_SRC
-
-** Asymptote
-
-#+BEGIN_SRC emacs-lisp
-  (use-package asy-mode
-    :load-path "/usr/share/asymptote"
-    :commands (asy-mode lasy-mode asy-insinuate-latex)
-    :mode ("\\.asy$" . asy-mode))
-#+END_SRC
-
 ** AUCTex
 
 #+BEGIN_SRC emacs-lisp
@@ -250,26 +199,6 @@ Miscellaneous things that don't fit anywhere else.
     (setq TeX-auto-save t)
     (setq TeX-parse-self t))
 
-#+END_SRC
-
-** Axiom
-
-#+BEGIN_SRC emacs-lisp
-  (use-package axiom-meta
-    :defer t
-    :init
-    (use-package axiom-environment
-      :ensure t
-      :commands run-axiom
-      :bind ("C-c a" . axiom-selector)
-      :init
-      (setq axiom-process-program
-            "~/src/fricas/usr/bin/fricas -nosman")
-      (setq axiom-process-spad-source-dirs
-            "~/src/fricas/usr/lib/fricas/target/x86_64-unknown-linux/src/algebra"))
-    (use-package ob-axiom
-      :ensure t
-      :defer t))
 #+END_SRC
 
 ** Company
@@ -289,28 +218,12 @@ Miscellaneous things that don't fit anywhere else.
       :config (global-eldoc-mode 1))
 #+END_SRC
 
-** ESS
-#+BEGIN_SRC emacs-lisp
-  (use-package ess-site
-    :ensure ess
-    :commands R)
-#+END_SRC
-
 ** Flycheck
 
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
     :ensure t
     :config (global-flycheck-mode 1))
-#+END_SRC
-
-** God mode
-
-#+BEGIN_SRC emacs-lisp
-  (use-package god-mode
-    :disabled t
-    :ensure t)
-
 #+END_SRC
 
 ** Golden Ratio
@@ -320,18 +233,6 @@ Miscellaneous things that don't fit anywhere else.
     :ensure t
     :config (golden-ratio-mode)
     :diminish golden-ratio-mode)
-#+END_SRC
-
-** Haskell
-
-#+BEGIN_SRC emacs-lisp
-  (use-package haskell-meta
-    :defer t
-    :init
-    (use-package haskell-mode
-      :ensure t)
-    (use-package flycheck-haskell
-      :ensure t))
 #+END_SRC
 
 ** Helm
@@ -357,47 +258,6 @@ Miscellaneous things that don't fit anywhere else.
              ("M-s /" . helm-multi-swoop))))
 #+END_SRC
 
-** Idris
-
-#+BEGIN_SRC emacs-lisp
-  (use-package idris-meta
-    :defer t
-    :init
-    (use-package idris-mode
-      :ensure t)
-    (use-package helm-idris
-      :ensure t))
-#+END_SRC
-
-** Lean Prover
-
-#+BEGIN_SRC emacs-lisp
-  (eval-and-compile
-    (defvar lean-rootdir
-      "~/src/leanprover/usr")
-    (defvar lean-emacs-path
-      (concat lean-rootdir "/share/emacs/site-lisp/lean")))
-
-  (use-package lean-mode
-    :load-path lean-emacs-path
-    :mode "\\.h?lean\\'"
-    :init
-    (use-package company :ensure t)
-    (use-package dash :ensure t)
-    (use-package dash-functional :ensure t)
-    (use-package flycheck :ensure t)
-    (use-package f :ensure t)
-    (use-package fill-column-indicator
-      :ensure t
-      :config
-      (setq fci-rule-column 90))
-    (use-package s :ensure t)
-    (use-package lua-mode :ensure t)
-    (use-package mmm-mode :ensure t :diminish mmm-mode))
-#+END_SRC
-
-*** TODO Make that command create temporary directories
-
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
@@ -406,90 +266,12 @@ Miscellaneous things that don't fit anywhere else.
     :bind (("C-x g" . magit-status)))
 #+END_SRC
 
-** Markdown
-
-#+BEGIN_SRC emacs-lisp
-  (use-package markdown-mode
-    :ensure t
-    :mode "\\.md\\'")
-#+END_SRC
-
-** Maxima
-
-#+BEGIN_SRC emacs-lisp
-  (use-package maxima
-    :mode ("\\.mac\\'" . maxima-mode)
-    :interpreter ("maxima" . maxima))
-#+END_SRC
-
-** Ocaml
-
-#+BEGIN_SRC emacs-lisp
-  (eval-and-compile
-    (defvar opam-site-lisp
-      (concat
-       (substring
-        (shell-command-to-string "opam config var share 2> /dev/null")
-        0 -1)
-       "/emacs/site-lisp")))
-
-  (use-package ocaml-meta
-    :disabled t
-    :defer t
-    :init
-    (use-package tuareg
-      :ensure t
-      :commands tuareg-mode)
-    (use-package merlin
-      :load-path opam-site-lisp
-      :commands merlin-mode
-      :init (add-hook 'tuareg-mode-hook 'merlin-mode))
-    (use-package utop
-      :load-path opam-site-lisp
-      :commands (utop utop-minor-mode)
-      :init (add-hook 'tuareg-mode-hook 'utop-minor-mode)
-      :diminish utop-minor-mode)
-    (use-package ocp-indent
-      :load-path opam-site-lisp
-      :commands ocp-setup-indent
-      :init (add-hook 'tuareg-mode-hook 'ocp-setup-indent)))
-#+END_SRC
-
-** Polymode
-#+BEGIN_SRC emacs-lisp
-  (use-package polymode
-    :ensure t)
-#+END_SRC
-
 ** Popwin
 
 #+BEGIN_SRC emacs-lisp
   (use-package popwin
     :ensure t
     :config (popwin-mode 1))
-#+END_SRC
-
-** Powerline
-
-#+BEGIN_SRC emacs-lisp
-  (use-package powerline
-    :disabled t
-    :ensure t
-    :config (powerline-default-theme))
-#+END_SRC
-
-** Proof General
-
-#+BEGIN_SRC emacs-lisp
-  (use-package proof-meta
-    :defer t
-    :init
-    (use-package proof-site
-      :load-path "~/.emacs.d/site-lisp/proof-general/ProofGeneral/generic")
-    (use-package company-coq
-      :ensure t
-      :commands company-coq-initialize
-      :init (add-hook 'coq-mode-hook 'company-coq-initialize)))
 #+END_SRC
 
 ** Rainbow Delimiters
@@ -501,7 +283,7 @@ Miscellaneous things that don't fit anywhere else.
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 #+END_SRC
 
-** Slime/Quicklisp
+** Slime
 
 #+BEGIN_SRC emacs-lisp
   (use-package slime
@@ -511,13 +293,6 @@ Miscellaneous things that don't fit anywhere else.
     :init
     (setq inferior-lisp-program "sbcl")
     (setq slime-contribs '(slime-fancy)))
-
-  (use-package quicklisp
-    :defer t
-    :init
-    (load (expand-file-name "~/src/quicklisp/slime-helper.el"))
-    (setq inferior-lisp-program "sbcl")
-    (setq common-lisp-hyperspec-root "~/Books/PL/Lisp/HyperSpec"))
 #+END_SRC
 
 ** SML
