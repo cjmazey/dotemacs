@@ -145,7 +145,7 @@ Global settings.
                                   ("p" "Poem" entry
                                    (file "poems.org")
                                    "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1))
-          org-habit-graph-column 55
+          org-habit-graph-column 57
           org-latex-create-formula-image-program 'imagemagick
           org-refile-use-outline-path t)
     (org-babel-do-load-languages
@@ -250,6 +250,26 @@ Global settings.
       :ensure t
       :bind (("M-s o" . helm-swoop)
              ("M-s /" . helm-multi-swoop))))
+#+END_SRC
+
+** Lean
+
+#+BEGIN_SRC emacs-lisp
+  (defvar lean-mode-required-packages
+    '(company dash dash-functional flycheck f
+              fill-column-indicator s))
+  (let ((need-to-refresh t))
+    (dolist (p lean-mode-required-packages)
+      (when (not (package-installed-p p))
+        (when need-to-refresh
+          (package-refresh-contents)
+          (setq need-to-refresh nil))
+        (package-install p))))
+
+  (use-package lean-mode
+    :load-path "~/src/leanprover/usr/share/emacs/site-lisp/lean/"
+    :mode "\\.h?lean\\'"
+    :init (setq lean-rootdir "~/src/leanprover/usr"))
 #+END_SRC
 
 ** Magit
