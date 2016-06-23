@@ -49,6 +49,7 @@ Install =use-package= if it isn't there.
     (package-install 'use-package))
   (eval-when-compile
     (require 'use-package))
+  (setq use-package-verbose t)
   (require 'diminish)
   (require 'bind-key)
 #+END_SRC
@@ -136,35 +137,28 @@ Global settings.
            ("C-c o l" . org-store-link))
     :config
     (add-to-list 'org-modules 'org-habit)
-    (setq org-directory "~/.emacs.d/private"
-          org-agenda-files '("~/.emacs.d/private/agenda.org")
-          org-archive-location "~/.emacs.d/private/archive.org::"
-          org-default-notes-file "~/.emacs.d/private/notes.org"
-          org-refile-use-outline-path t
+    (setq org-directory "~/.emacs.d/org"
+          org-agenda-files '("~/.emacs.d/org/agendas")
           org-capture-templates '(("t" "Task" entry
-                                   (file+headline "~/.emacs.d/private/agenda.org" "Tasks")
+                                   (file "agendas/tasks.org")
                                    "* TODO %?\n  %u\n  %a")
                                   ("p" "Poem" entry
-                                   (file "~/.emacs.d/private/poems.org")
+                                   (file "poems.org")
                                    "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1))
+          org-habit-graph-column 55
           org-latex-create-formula-image-program 'imagemagick
-          org-habit-graph-column 55)
+          org-refile-use-outline-path t)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (latex . t)
+       (maxima . t)))
     (add-to-list 'org-latex-packages-alist '("" "tikz" t))
-    (use-package ox-html
-      :defer t
-      :config
+    (with-eval-after-load 'ox-html
       (add-to-list 'org-html-mathjax-options
                    '(path "http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML"))
       (add-to-list 'org-html-infojs-options
-                   '(path . "http://localhost/org-info.js")))
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((R . t)
-       (emacs-lisp . t)
-       (latex . t)
-       (maxima . t))))
-
-
+                   '(path . "http://localhost/org-info.js"))))
 #+END_SRC
 
 ** Ace-window
@@ -299,14 +293,12 @@ Global settings.
 ** SML
 
 #+BEGIN_SRC emacs-lisp
-  (use-package sml-meta
-    :defer t
-    :init
-    (use-package sml-mode
-      :ensure t
-      :commands (sml-mode sml-run))
-    (use-package ob-sml
-      :ensure t))
+  (use-package sml-mode
+    :ensure t
+    :commands (sml-mode sml-run))
+  (use-package ob-sml
+    :ensure t
+    :defer t)
 #+END_SRC
 
 ** Unicode Fonts
@@ -314,6 +306,5 @@ Global settings.
 #+BEGIN_SRC emacs-lisp
   (use-package unicode-fonts
     :ensure t
-    :config
-    (unicode-fonts-setup))
+    :config (unicode-fonts-setup))
 #+END_SRC
