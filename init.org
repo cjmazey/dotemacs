@@ -95,7 +95,7 @@ Global settings.
                    spacemacs-theme
                    tao-theme))
     `(use-package ,theme :ensure t :defer t))
-  (load-theme 'spacemacs-light 'no-confirm)
+  (load-theme 'spacemacs-dark 'no-confirm)
 #+END_SRC
 
 ** Fonts
@@ -135,17 +135,20 @@ Global settings.
            ("C-c o c" . org-capture)
            ("C-c o l" . org-store-link))
     :config
-    (setq org-directory "~/.emacs.d/private")
-    (setq org-agenda-files '("~/.emacs.d/private/agenda.org"))
-    (setq org-archive-location "~/.emacs.d/private/archive.org::")
-    (setq org-default-notes-file "~/.emacs.d/private/notes.org")
-    (setq org-refile-use-outline-path t)
-    (setq org-capture-templates
-          '(("t" "Task" entry (file+headline "~/.emacs.d/private/agenda.org" "Tasks")
-             "* TODO %?\n  %u\n  %a")
-            ("p" "Poem" entry (file "~/.emacs.d/private/poems.org")
-             "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1)))
-    (setq org-latex-create-formula-image-program 'imagemagick)
+    (add-to-list 'org-modules 'org-habit)
+    (setq org-directory "~/.emacs.d/private"
+          org-agenda-files '("~/.emacs.d/private/agenda.org")
+          org-archive-location "~/.emacs.d/private/archive.org::"
+          org-default-notes-file "~/.emacs.d/private/notes.org"
+          org-refile-use-outline-path t
+          org-capture-templates '(("t" "Task" entry
+                                   (file+headline "~/.emacs.d/private/agenda.org" "Tasks")
+                                   "* TODO %?\n  %u\n  %a")
+                                  ("p" "Poem" entry
+                                   (file "~/.emacs.d/private/poems.org")
+                                   "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1))
+          org-latex-create-formula-image-program 'imagemagick
+          org-habit-graph-column 55)
     (add-to-list 'org-latex-packages-alist '("" "tikz" t))
     (use-package ox-html
       :defer t
@@ -159,9 +162,9 @@ Global settings.
      '((R . t)
        (emacs-lisp . t)
        (latex . t)
-       (maxima . t)))
-    (require 'org-habit)
-    (setq org-habit-graph-column 55))
+       (maxima . t))))
+
+
 #+END_SRC
 
 ** Ace-window
@@ -202,9 +205,9 @@ Global settings.
 ** ElDoc
 
 #+BEGIN_SRC emacs-lisp
-    (use-package eldoc
-      :diminish eldoc-mode
-      :config (global-eldoc-mode 1))
+  (use-package eldoc
+    :config (global-eldoc-mode 1)
+    :diminish eldoc-mode)
 #+END_SRC
 
 ** Elpy
