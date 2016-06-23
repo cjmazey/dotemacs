@@ -55,36 +55,32 @@ Install =use-package= if it isn't there.
 
 * Settings
 
-Miscellaneous things that don't fit anywhere else.
+Global settings.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package init-meta
-    :defer t
-    :init
-    (add-hook 'before-save-hook 'delete-trailing-whitespace)
-    (add-hook 'text-mode-hook 'auto-fill-mode)
-    (column-number-mode 1)
-    (global-hl-line-mode 1)
-    (set-language-environment "UTF-8")
-    (setq auto-save-default nil)
-    (setq default-frame-alist
-          '((width . 100)
-            (height . 40)
-            (menu-bar-lines . 0)
-            (vertical-scroll-bars . nil)
-            (tool-bar-lines . 0)))
-    (setq indent-tabs-mode nil)
-    (setq inhibit-startup-echo-area-message t)
-    ;(setq inhibit-startup-message t)
-    (setq major-mode 'text-mode)
-    (setq make-backup-files nil)
-    (setq mouse-wheel-progressive-speed nil)
-    (setq mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
-    (setq require-final-newline t)
-    (setq scroll-conservatively 101)
-    (setq visible-bell t)
-    (show-paren-mode 1)
-    (size-indication-mode 1))
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  (column-number-mode 1)
+  (global-hl-line-mode 1)
+  (set-language-environment "UTF-8")
+  (show-paren-mode 1)
+  (size-indication-mode 1)
+  (setq auto-save-default nil
+        default-frame-alist '((width . 100)
+                              (height . 40)
+                              (menu-bar-lines . 0)
+                              (vertical-scroll-bars . nil)
+                              (tool-bar-lines . 0))
+        indent-tabs-mode nil
+        inhibit-startup-echo-area-message t
+        major-mode 'text-mode
+        make-backup-files nil
+        mouse-wheel-progressive-speed nil
+        mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control)))
+        require-final-newline t
+        scroll-conservatively 101
+        visible-bell t)
 #+END_SRC
 
 * Appearance
@@ -92,43 +88,38 @@ Miscellaneous things that don't fit anywhere else.
 ** Themes
 
 #+BEGIN_SRC emacs-lisp
-  (use-package leuven-theme :ensure t :defer t)
-  (use-package majapahit-theme :ensure t :defer t)
-  (use-package material-theme :ensure t :defer t)
-  (use-package solarized-theme :ensure t :defer t)
-  (use-package spacemacs-theme :ensure t :defer t)
-  (use-package tao-theme :ensure t :defer t)
+  (dolist (theme '(leuven-theme
+                   majapahit-theme
+                   material-theme
+                   solarized-theme
+                   spacemacs-theme
+                   tao-theme))
+    `(use-package ,theme :ensure t :defer t))
   (load-theme 'spacemacs-light 'no-confirm)
 #+END_SRC
 
 ** Fonts
 
 #+BEGIN_SRC emacs-lisp
-  (use-package face-meta
-    :defer t
-    :init
-    (let ((font "IBM 3270 Medium"))
-      (set-face-attribute 'default nil
-                          :font (concat font " 11"))
-      (set-face-attribute 'fixed-pitch nil
-                          :font (concat font " 11"))
-      (set-face-attribute 'variable-pitch nil
-                          :font "Noto Sans 9")
-      (set-face-attribute 'Info-quoted nil
-                          :font (concat font " 9")
-                          :inherit font-lock-keyword-face)))
+  (let ((font "IBM 3270 Medium"))
+    (set-face-attribute 'default nil
+                        :font (concat font " 11"))
+    (set-face-attribute 'fixed-pitch nil
+                        :font (concat font " 11"))
+    (set-face-attribute 'variable-pitch nil
+                        :font "Noto Sans 9")
+    (set-face-attribute 'Info-quoted nil
+                        :font (concat font " 9")
+                        :inherit font-lock-keyword-face))
 #+END_SRC
 
 * Global keybindings
 
 #+BEGIN_SRC emacs-lisp
-  (use-package bind-key-meta
-    :defer t
-    :init
-    (bind-key "M-<left>" 'windmove-left)
-    (bind-key "M-<right>" 'windmove-right)
-    (bind-key "M-<up>" 'windmove-up)
-    (bind-key "M-<down>" 'windmove-down))
+  (bind-key "M-<left>" 'windmove-left)
+  (bind-key "M-<right>" 'windmove-right)
+  (bind-key "M-<up>" 'windmove-up)
+  (bind-key "M-<down>" 'windmove-down)
 #+END_SRC
 
 * Packages
@@ -166,8 +157,6 @@ Miscellaneous things that don't fit anywhere else.
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((R . t)
-       (asymptote . t)
-       (axiom . t)
        (emacs-lisp . t)
        (latex . t)
        (maxima . t)))
@@ -216,6 +205,16 @@ Miscellaneous things that don't fit anywhere else.
     (use-package eldoc
       :diminish eldoc-mode
       :config (global-eldoc-mode 1))
+#+END_SRC
+
+** Elpy
+
+#+BEGIN_SRC emacs-lisp
+  (use-package elpy
+    :ensure t
+    :config
+    (elpy-enable)
+    (elpy-use-ipython))
 #+END_SRC
 
 ** Flycheck
@@ -287,10 +286,9 @@ Miscellaneous things that don't fit anywhere else.
 
 #+BEGIN_SRC emacs-lisp
   (use-package slime
-    :disabled t
     :ensure t
     :commands (slime slime-mode)
-    :init
+    :config
     (setq inferior-lisp-program "sbcl")
     (setq slime-contribs '(slime-fancy)))
 #+END_SRC
