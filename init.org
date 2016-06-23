@@ -177,14 +177,12 @@ Global settings.
 #+BEGIN_SRC emacs-lisp
   (use-package tex-site
     :ensure auctex
-    :init
-    (use-package company-auctex
-      :ensure t
-      :init (company-auctex-init))
     :config
     (setq TeX-auto-save t)
-    (setq TeX-parse-self t))
-
+    (setq TeX-parse-self t)
+    (use-package company-auctex
+      :ensure t
+      :config (company-auctex-init)))
 #+END_SRC
 
 ** Company
