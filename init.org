@@ -89,14 +89,15 @@ Global settings.
 ** Themes
 
 #+BEGIN_SRC emacs-lisp
-  (dolist (theme '(leuven-theme
+  (dolist (theme '(farmhouse-theme
+                   leuven-theme
                    majapahit-theme
                    material-theme
                    solarized-theme
                    spacemacs-theme
                    tao-theme))
     `(use-package ,theme :ensure t :defer t))
-  (load-theme 'spacemacs-dark 'no-confirm)
+  (load-theme 'farmhouse-light 'no-confirm)
 #+END_SRC
 
 ** Fonts
