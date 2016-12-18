@@ -97,7 +97,7 @@ Global settings.
                    spacemacs-theme
                    tao-theme))
     `(use-package ,theme :ensure t :defer t))
-  (load-theme 'farmhouse-light 'no-confirm)
+  (load-theme 'tao-yang 'no-confirm)
 #+END_SRC
 
 ** Fonts
@@ -207,6 +207,7 @@ Global settings.
 
 #+BEGIN_SRC emacs-lisp
   (use-package elpy
+    :disabled t
     :ensure t
     :config
     (elpy-enable)
@@ -253,6 +254,14 @@ Global settings.
              ("M-s /" . helm-multi-swoop))))
 #+END_SRC
 
+** Idris
+
+#+BEGIN_SRC emacs-lisp
+  (use-package idris-mode
+    :ensure t
+    :commands (idris-mode))
+#+END_SRC
+
 ** Lean
 
 #+BEGIN_SRC emacs-lisp
@@ -296,6 +305,20 @@ Global settings.
     :ensure t
     :config
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+END_SRC
+
+** Sage
+
+#+BEGIN_SRC emacs-lisp
+  (use-package sage-shell-mode
+    :ensure t
+    :commands (sage-shell:run-sage sage-shell:sage-mode)
+    :config
+    (setq sage-shell:user-prompt-toolkit t)
+    (sage-shell:define-alias))
+
+  (use-package helm-sage
+    :ensure t)
 #+END_SRC
 
 ** Slime
