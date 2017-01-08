@@ -68,7 +68,7 @@ Global settings.
   (show-paren-mode 1)
   (size-indication-mode 1)
   (setq auto-save-default nil
-        default-frame-alist '((width . 100)
+        default-frame-alist '((width . 90)
                               (height . 40)
                               (menu-bar-lines . 0)
                               (vertical-scroll-bars . nil)
@@ -96,8 +96,10 @@ Global settings.
                    solarized-theme
                    spacemacs-theme
                    tao-theme))
-    `(use-package ,theme :ensure t :defer t))
-  (load-theme 'tao-yang 'no-confirm)
+    (unless (package-installed-p theme)
+      (package-refresh-contents)
+      (package-install theme)))
+  (load-theme 'material 'no-confirm)
 #+END_SRC
 
 ** Fonts
@@ -171,6 +173,21 @@ Global settings.
     :config
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
     (setq aw-dispatch-always t))
+#+END_SRC
+
+** Anaconda
+
+#+BEGIN_SRC emacs-lisp
+  (use-package anaconda-mode
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+    (use-package company-anaconda
+      :ensure t
+      :config
+      (eval-after-load "company"
+	'(add-to-list 'company-backends 'company-anaconda))))
 #+END_SRC
 
 ** AUCTex
@@ -315,10 +332,9 @@ Global settings.
     :commands (sage-shell:run-sage sage-shell:sage-mode)
     :config
     (setq sage-shell:user-prompt-toolkit t)
-    (sage-shell:define-alias))
-
-  (use-package helm-sage
-    :ensure t)
+    (sage-shell:define-alias)
+    (use-package helm-sage
+      :ensure t))
 #+END_SRC
 
 ** Slime
