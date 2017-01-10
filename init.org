@@ -286,8 +286,8 @@ Global settings.
 
 #+BEGIN_SRC emacs-lisp
   (defvar lean-mode-required-packages
-    '(company dash dash-functional flycheck f
-              fill-column-indicator s))
+    '(company dash dash-functional f
+              flycheck let-alist s seq))
   (let ((need-to-refresh t))
     (dolist (p lean-mode-required-packages)
       (when (not (package-installed-p p))
