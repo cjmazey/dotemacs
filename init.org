@@ -73,15 +73,15 @@ Global settings.
                               (menu-bar-lines . 0)
                               (vertical-scroll-bars . nil)
                               (tool-bar-lines . 0))
-        indent-tabs-mode nil
         inhibit-startup-echo-area-message t
-        major-mode 'text-mode
         make-backup-files nil
         mouse-wheel-progressive-speed nil
         mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control)))
-        require-final-newline t
         scroll-conservatively 101
         visible-bell t)
+  (setq-default indent-tabs-mode nil
+                major-mode 'text-mode
+                require-final-newline t)
 #+END_SRC
 
 * Appearance
@@ -89,7 +89,10 @@ Global settings.
 ** Themes
 
 #+BEGIN_SRC emacs-lisp
-  (dolist (theme '(farmhouse-theme
+  (dolist (theme '(apropospriate-theme
+                   doom-themes
+                   farmhouse-theme
+                   inkpot-theme
                    leuven-theme
                    majapahit-theme
                    material-theme
@@ -99,7 +102,7 @@ Global settings.
     (unless (package-installed-p theme)
       (package-refresh-contents)
       (package-install theme)))
-  (load-theme 'material 'no-confirm)
+  (load-theme 'apropospriate-light 'no-confirm)
 #+END_SRC
 
 ** Fonts
@@ -187,7 +190,7 @@ Global settings.
       :ensure t
       :config
       (eval-after-load "company"
-	'(add-to-list 'company-backends 'company-anaconda))))
+        '(add-to-list 'company-backends 'company-anaconda))))
 #+END_SRC
 
 ** AUCTex
