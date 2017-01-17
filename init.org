@@ -102,13 +102,13 @@ Global settings.
     (unless (package-installed-p theme)
       (package-refresh-contents)
       (package-install theme)))
-  (load-theme 'apropospriate-light 'no-confirm)
+  (load-theme 'apropospriate-dark 'no-confirm)
 #+END_SRC
 
 ** Fonts
 
 #+BEGIN_SRC emacs-lisp
-  (let ((font "IBM 3270 Medium"))
+  (let ((font "Liberation Mono"))
     (set-face-attribute 'default nil
                         :font (concat font " 11"))
     (set-face-attribute 'fixed-pitch nil
