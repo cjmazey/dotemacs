@@ -294,9 +294,9 @@ Global settings.
         (package-install p))))
 
   (use-package lean-mode
-    :load-path "~/opt/leanprover/usr/share/emacs/site-lisp/lean/"
+    :load-path "~/opt/leanprover/lean/src/emacs"
     :mode "\\.h?lean\\'"
-    :init (setq lean-rootdir "~/opt/leanprover/usr"))
+    :init (setq lean-rootdir "~/opt/leanprover/lean"))
 #+END_SRC
 
 ** Magit
