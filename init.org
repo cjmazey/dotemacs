@@ -108,13 +108,13 @@ Global settings.
 ** Fonts
 
 #+BEGIN_SRC emacs-lisp
-  (let ((font "IBM 3270 Medium"))
+  (let ((font "Droid Sans Mono"))
     (set-face-attribute 'default nil
                         :font (concat font " 11"))
     (set-face-attribute 'fixed-pitch nil
                         :font (concat font " 11"))
     (set-face-attribute 'variable-pitch nil
-                        :font "Noto Sans 9")
+                        :font "Droid Sans 9")
     (set-face-attribute 'Info-quoted nil
                         :font (concat font " 9")
                         :inherit font-lock-keyword-face))
@@ -131,42 +131,6 @@ Global settings.
 
 * Packages
 
-** Org
-
-#+BEGIN_SRC emacs-lisp
-  (use-package org
-    :pin org
-    :ensure org-plus-contrib
-    :bind (("C-c o a" . org-agenda)
-           ("C-c o b" . org-iswitchb)
-           ("C-c o c" . org-capture)
-           ("C-c o l" . org-store-link))
-    :config
-    (add-to-list 'org-modules 'org-habit)
-    (setq org-directory "~/.emacs.d/org"
-          org-agenda-files '("~/.emacs.d/org/agendas")
-          org-capture-templates '(("t" "Task" entry
-                                   (file "agendas/tasks.org")
-                                   "* TODO %?\n  %u\n  %a")
-                                  ("p" "Poem" entry
-                                   (file "poems.org")
-                                   "* UNPUBLISHED %?\n\n%i\n\n%U" :empty-lines 1))
-          org-habit-graph-column 57
-          org-latex-create-formula-image-program 'imagemagick
-          org-refile-use-outline-path t)
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (latex . t)
-       (maxima . t)))
-    (add-to-list 'org-latex-packages-alist '("" "tikz" t))
-    (with-eval-after-load 'ox-html
-      (add-to-list 'org-html-mathjax-options
-                   '(path "http://localhost/mathjax/MathJax.js?config=TeX-AMS_HTML"))
-      (add-to-list 'org-html-infojs-options
-                   '(path . "http://localhost/org-info.js"))))
-#+END_SRC
-
 ** Ace-window
 
 #+BEGIN_SRC emacs-lisp
@@ -176,34 +140,6 @@ Global settings.
     :config
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
     (setq aw-dispatch-always t))
-#+END_SRC
-
-** Anaconda
-
-#+BEGIN_SRC emacs-lisp
-  (use-package anaconda-mode
-    :ensure t
-    :config
-    (add-hook 'python-mode-hook 'anaconda-mode)
-    (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-    (use-package company-anaconda
-      :ensure t
-      :config
-      (eval-after-load "company"
-        '(add-to-list 'company-backends 'company-anaconda))))
-#+END_SRC
-
-** AUCTex
-
-#+BEGIN_SRC emacs-lisp
-  (use-package tex-site
-    :ensure auctex
-    :config
-    (setq TeX-auto-save t)
-    (setq TeX-parse-self t)
-    (use-package company-auctex
-      :ensure t
-      :config (company-auctex-init)))
 #+END_SRC
 
 ** Company
@@ -221,17 +157,6 @@ Global settings.
   (use-package eldoc
     :config (global-eldoc-mode 1)
     :diminish eldoc-mode)
-#+END_SRC
-
-** Elpy
-
-#+BEGIN_SRC emacs-lisp
-  (use-package elpy
-    :disabled t
-    :ensure t
-    :config
-    (elpy-enable))
-  ;  (elpy-use-ipython))
 #+END_SRC
 
 ** Flycheck
@@ -274,31 +199,6 @@ Global settings.
              ("M-s /" . helm-multi-swoop))))
 #+END_SRC
 
-** Idris
-
-#+BEGIN_SRC emacs-lisp
-  (use-package idris-mode
-    :ensure t
-    :commands (idris-mode))
-#+END_SRC
-
-** Lean
-
-#+BEGIN_SRC emacs-lisp
-  (let ((need-to-refresh t))
-    (dolist (p '(company dash dash-functional f flycheck let-alist s seq))
-      (when (not (package-installed-p p))
-        (when need-to-refresh
-          (package-refresh-contents)
-          (setq need-to-refresh nil))
-        (package-install p))))
-
-  (use-package lean-mode
-    :load-path "~/opt/leanprover/lean/src/emacs"
-    :mode "\\.h?lean\\'"
-    :init (setq lean-rootdir "~/opt/leanprover/lean"))
-#+END_SRC
-
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
@@ -324,19 +224,6 @@ Global settings.
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 #+END_SRC
 
-** Sage
-
-#+BEGIN_SRC emacs-lisp
-  (use-package sage-shell-mode
-    :ensure t
-    :commands (sage-shell:run-sage sage-shell:sage-mode)
-    :config
-    (setq sage-shell:user-prompt-toolkit t)
-    (sage-shell:define-alias)
-    (use-package helm-sage
-      :ensure t))
-#+END_SRC
-
 ** Slime
 
 #+BEGIN_SRC emacs-lisp
@@ -346,23 +233,4 @@ Global settings.
     :config
     (setq inferior-lisp-program "sbcl")
     (setq slime-contribs '(slime-fancy)))
-#+END_SRC
-
-** SML
-
-#+BEGIN_SRC emacs-lisp
-  (use-package sml-mode
-    :ensure t
-    :commands (sml-mode sml-run))
-  (use-package ob-sml
-    :ensure t
-    :defer t)
-#+END_SRC
-
-** Unicode Fonts
-
-#+BEGIN_SRC emacs-lisp
-  (use-package unicode-fonts
-    :ensure t
-    :config (unicode-fonts-setup))
 #+END_SRC
