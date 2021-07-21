@@ -110,13 +110,13 @@ Global settings.
 #+BEGIN_SRC emacs-lisp
   (let ((font "Droid Sans Mono"))
     (set-face-attribute 'default nil
-                        :font (concat font " 11"))
+                        :font (concat font " 13"))
     (set-face-attribute 'fixed-pitch nil
-                        :font (concat font " 11"))
+                        :font (concat font " 13"))
     (set-face-attribute 'variable-pitch nil
-                        :font "Droid Sans 9")
+                        :font "Droid Sans 11")
     (set-face-attribute 'Info-quoted nil
-                        :font (concat font " 9")
+                        :font (concat font " 11")
                         :inherit font-lock-keyword-face))
 #+END_SRC
 
@@ -166,6 +166,19 @@ Global settings.
     :ensure t
     :config (global-flycheck-mode 1))
 #+END_SRC
+
+** Geiser
+
+#+BEGIN_SRC emacs-lisp
+  (use-package geiser-mit
+    :ensure t
+    :commands (run-mit))
+  (use-package geiser-racket
+    :ensure t
+    :commands (run-racket))
+#+END_SRC
+
+#+RESULTS:
 
 ** Golden Ratio
 
